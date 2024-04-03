@@ -41,7 +41,7 @@ with st.sidebar:
            time.sleep(1)
            my_bar.empty()
 
-    blank = st.container(border=False,height=200)
+    blank = st.container(border=False,height=100)
     blank.title("")
 
 
@@ -49,8 +49,8 @@ with st.sidebar:
 
 
     #openai_api_key = st.text_input("TechVantage", key="chatbot_api_key", type="password")
-    "[TechVantage](https://platform.openai.com/account/api-keys)"
-    "[Source by Dorothy](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
+    #"[TechVantage](https://platform.openai.com/account/api-keys)"
+    "[Source by Dorothy](https://github.com/DorothyLiu22/chatgpt_kevin)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
 st.title("💬 TechVantage 聊天室")
