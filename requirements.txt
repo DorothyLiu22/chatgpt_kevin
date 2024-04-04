@@ -2,5 +2,4 @@ streamlit
 streamlit_chat
 streamlit_extras
 openai
-datetime
 pandas
