@@ -3,6 +3,7 @@ from streamlit_chat import message
 from streamlit_extras.colored_header import colored_header
 from openai import OpenAI
 import time
+from datatime import datetime
 import re
 import pandas as pd
 import random
@@ -10,11 +11,12 @@ import random
 st.set_page_config(page_title="Dorothy-experiment")
 
 def chat_history():
-    random_number = random.randint(1,1000)
+    #random_number = random.randint(1,1000)
+    time = datetime.now()
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
     print(test)
-    test.to_csv("chat_history/chat"+ str(random_number) +".csv", encoding="utf-8")
+    test.to_csv("chat_history/chat"+ str(time) +".csv", encoding="utf-8")
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
