@@ -123,7 +123,7 @@ if prompt := st.chat_input("开始聊天"):
         message(prompt, is_user=True, avatar_style="thumbs")
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
-        response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
+        response = client.chat.completions.create(model="gpt-3.5", messages=st.session_state.input)
         time.sleep(2)
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
