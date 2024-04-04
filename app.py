@@ -13,9 +13,6 @@ st.set_page_config(page_title="Dorothy-experiment")
 conn = st.connection('gcs', type=FilesConnection)
 df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
 
-for row in df.itertuples():
-    st.write(f"{row.Owner} has a :{row.Pet}:")
-
 
 def chat_history():
     random_number = random.randint(1,1000)
