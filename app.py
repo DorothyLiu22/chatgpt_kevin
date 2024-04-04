@@ -31,7 +31,7 @@ with st.sidebar:
         st.header("❗提醒")
         st.markdown("连接可能不稳定，如出错请再次发送您的消息")
 
-    blank = st.container(border=False, height=50)
+    blank = st.container(border=False, height=20)
     blank.title("")
 
     with st.container(border=True,):
@@ -46,7 +46,7 @@ with st.sidebar:
            time.sleep(1)
            my_bar.empty()
 
-    blank = st.container(border=False,height=100)
+    blank = st.container(border=False,height=50)
     blank.title("")
 
 
