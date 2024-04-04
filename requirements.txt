@@ -3,3 +3,5 @@ streamlit_chat
 streamlit_extras
 openai
 pandas
+gcsfs
+st-files-connection
