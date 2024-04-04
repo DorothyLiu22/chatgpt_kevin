@@ -31,9 +31,9 @@ with st.sidebar:
 
     with st.container(border=True,):
         st.header("❗ 结束讨论后请按下按钮 ")
-        if st.button("保存聊天", type="primary"):
+        if st.button("结束聊天", type="primary"):
            chat_history()
-           progress_text = "您的聊天记录已保存，请回到问卷页面"
+           progress_text = "聊天连接已断开，请回到问卷页面"
            my_bar = st.progress(0, text=progress_text)
            for percent_complete in range(100):
               time.sleep(0.01)
@@ -57,17 +57,16 @@ st.title("💬 TechVantage 聊天室")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 
-#openai_api_key = "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"
 
 kevin = """You are an employee of “TechVantage Co.Ltd”, a multinational technology company. You need to engage in a discussion about how to retain highly skilled but underpaid employees in an uncertain economy. You need to talk to me about offering any viable solutions.
 
 Your duty is to elaborate on my initial idea and come up with a feasible implementation plan.
 
-Do not propose more than 3 points at a time, and do not exceed 100 words. Please don't come up with new ideas if I don’t ask you.
+Do not propose more than 3 points at a time, and do not exceed 50 words. Please don't come up with new ideas if I don’t ask you.
 
 I'm your teammate. Please speak as equals. Don't make a list of bullet points. Answer in one paragraph.
 
-Please communicate with me in Chinese. Do not ask me any question. Your name is "凯文"."""
+Please communicate with me in Chinese. Do not ask me any question. Your name is "Kevin"."""
 #st.session_state["messages"] = ({"role": "system", "content": "you are a translator named Kevin"})
 
 if "input" not in st.session_state:
