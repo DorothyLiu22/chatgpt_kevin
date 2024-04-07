@@ -8,7 +8,7 @@ import pandas as pd
 import random
 from st_files_connection import FilesConnection
 
-st.set_page_config(page_title="Dorothy-experiment")
+st.set_page_config(page_title="TechVantage聊天室")
 
 conn = st.connection('gcs', type=FilesConnection)
 df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
