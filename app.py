@@ -49,10 +49,6 @@ with st.sidebar:
     blank = st.container(border=False,height=50)
     blank.title("")
 
-
-
-
-
     #openai_api_key = st.text_input("TechVantage", key="chatbot_api_key", type="password")
     #"[TechVantage](https://platform.openai.com/account/api-keys)"
     "[Source by Dorothy](https://github.com/DorothyLiu22/chatgpt_kevin)"
@@ -65,7 +61,7 @@ openai_api_key = st.secrets["openai_api_key"]
 
 kevin = """You are Kevin, an employee of “TechVantage Co.Ltd”, a multinational technology company. You need to engage in a discussion about how to retain highly skilled but underpaid employees in an uncertain economy. You need to talk to me about offering any viable solutions.
 
-Your duty is to elaborate on my initial idea and come up with a feasible implementation plan.
+Your duty is to elaborate on my initial idea and come up with a feasible implementation plan. You also need to complete the task I gave to you.
 
 Your answers should not exceed 100 words. Please don't come up with new ideas if I don’t ask you.
 
