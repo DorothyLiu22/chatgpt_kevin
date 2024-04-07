@@ -86,32 +86,47 @@ for msg in st.session_state.past:
 
 
 
-welcome = ["你好","您好","hello","hi"]
-who=["你是谁","你叫什么","名字"]
-start = ["开始讨论"]
+welcome = ["你好","您好","hello","hi","你是谁","你叫什么", "名字"]
+start = ["开始讨论", "讨论"]
+end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
+appreciation = ["有道理", "真不错","厉害"]
+bye = ["拜拜", "就这样","没有其他想法了", "想到这些","没有新的想法"]
+
 
 if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
-            or re.search(welcome[3], prompt):
+            or re.search(welcome[3], prompt) or re.search(welcome[4], prompt) or re.search(welcome[5], prompt)\
+            or re.search(welcome[6], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
-         time.sleep(1)
-         message("你好！", avatar_style="bottts")
+         time.sleep(2)
+         message("你好哇！我叫Kevin，我们现在要讨论“如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="thumbs")
          st.session_state.past.append({"role": "user", "content": prompt})
-         st.session_state.past.append({"role": "assistant", "content": "你好！"})
-          #st.chat_message("user").write(prompt)
-          #st.chat_message("assistant").write("你好！")
-    elif re.search(who[0], prompt) or re.search(who[1], prompt) or re.search(who[2], prompt):
+         st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫Kevin，我们现在要讨论“如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？"})
+    elif re.search(end[0], prompt) or re.search(end[1], prompt) or re.search(end[2], prompt)\
+            or re.search(end[3], prompt) or re.search(end[4], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
-        time.sleep(1)
-        message("你好！我叫Kevin", avatar_style="bottts")
+        time.sleep(2)
+        message("我暂时没想到其他的hhhh", avatar_style="thumbs")
         st.session_state.past.append({"role": "user", "content": prompt})
-        st.session_state.past.append({"role": "assistant", "content": "你好！我叫Kevin"})
-    elif re.search(start[0], prompt):
+        st.session_state.past.append({"role": "assistant", "content": "我暂时没想到其他的hhhh"})
+    elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
-        time.sleep(1)
-        message("好的！你有什么想法吗？", avatar_style="bottts")
+        time.sleep(2)
+        message("谢谢hhh", avatar_style="thumbs")
+        st.session_state.past.append({"role": "user", "content": prompt})
+        st.session_state.past.append({"role": "assistant", "content": "谢谢hhh"})
+    elif re.search(start[0], prompt) or re.search(start[1], prompt):
+        message(prompt, is_user=True, avatar_style="thumbs")
+        time.sleep(2)
+        message("好的！你有什么想法吗？", avatar_style="thumbs")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "好的！你有什么想法吗？"})
+    elif re.search(bye[0], prompt) or re.search(bye[1], prompt) or re.search(bye[2], prompt) or re.search(bye[3], prompt):
+        message(prompt, is_user=True, avatar_style="thumbs")
+        time.sleep(2)
+        message("好的，那我们就先这样，拜拜！", avatar_style="thumbs")
+        st.session_state.past.append({"role": "user", "content": prompt})
+        st.session_state.past.append({"role": "assistant", "content": "好的，那我们就先这样，拜拜！"})
     else:
         client = OpenAI(api_key=openai_api_key)
         st.session_state.input.append({"role":"system", "content":kevin})
@@ -124,8 +139,9 @@ if prompt := st.chat_input("开始聊天"):
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
-        message(msg, avatar_style="bottts")
+        message(msg, avatar_style="thumbs")
         #st.chat_message("assistant").write(msg)
+
 
 
 
