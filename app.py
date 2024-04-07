@@ -99,32 +99,32 @@ if prompt := st.chat_input("开始聊天"):
             or re.search(welcome[6], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
          time.sleep(2)
-         message("你好哇！我叫Kevin，我们现在要讨论“如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="thumbs")
+         message("你好哇！我叫Kevin，我们现在要讨论“如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="bottts")
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫Kevin，我们现在要讨论“如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？"})
     elif re.search(end[0], prompt) or re.search(end[1], prompt) or re.search(end[2], prompt)\
             or re.search(end[3], prompt) or re.search(end[4], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
         time.sleep(2)
-        message("我暂时没想到其他的hhhh", avatar_style="thumbs")
+        message("我暂时没想到其他的hhhh", avatar_style="bottts")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "我暂时没想到其他的hhhh"})
     elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
         time.sleep(2)
-        message("谢谢hhh", avatar_style="thumbs")
+        message("谢谢hhh", avatar_style="bottts")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "谢谢hhh"})
     elif re.search(start[0], prompt) or re.search(start[1], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
         time.sleep(2)
-        message("好的！你有什么想法吗？", avatar_style="thumbs")
+        message("好的！你有什么想法吗？", avatar_style="bottts")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "好的！你有什么想法吗？"})
     elif re.search(bye[0], prompt) or re.search(bye[1], prompt) or re.search(bye[2], prompt) or re.search(bye[3], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
         time.sleep(2)
-        message("好的，那我们就先这样，拜拜！", avatar_style="thumbs")
+        message("好的，那我们就先这样，拜拜！", avatar_style="bottts")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "好的，那我们就先这样，拜拜！"})
     else:
@@ -139,7 +139,7 @@ if prompt := st.chat_input("开始聊天"):
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
-        message(msg, avatar_style="thumbs")
+        message(msg, avatar_style="bottts")
         #st.chat_message("assistant").write(msg)
 
 
