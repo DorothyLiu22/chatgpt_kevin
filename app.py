@@ -87,6 +87,7 @@ start = ["开始讨论", "讨论"]
 end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
 appreciation = ["有道理", "真不错","厉害"]
 bye = ["拜拜", "就这样","没有其他想法了", "想到这些","没有新的想法"]
+identity = ["是AI", "是人", "是机器人"]
 
 
 if prompt := st.chat_input("开始聊天"):
@@ -111,6 +112,12 @@ if prompt := st.chat_input("开始聊天"):
         message("谢谢hhh", avatar_style="bottts")
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "谢谢hhh"})
+    elif re.search(identity[0], prompt) or re.search(identity[1], prompt) or re.search(identity[2], prompt):
+        message(prompt, is_user=True, avatar_style="thumbs")
+        time.sleep(8)
+        message("我是虚拟助手Kevin,我们抓紧时间讨论吧，你还有什么想法吗？", avatar_style="thumbs")
+        st.session_state.past.append({"role": "user", "content": prompt})
+        st.session_state.past.append({"role": "assistant", "content": "我是虚拟助手Kevin，我们抓紧时间讨论吧，你还有什么想法吗？"})
     elif re.search(start[0], prompt) or re.search(start[1], prompt):
         message(prompt, is_user=True, avatar_style="thumbs")
         time.sleep(2)
