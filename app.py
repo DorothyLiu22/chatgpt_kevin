@@ -27,10 +27,6 @@ with st.sidebar:
     blank = st.container(border=False, height=50)
     blank.title("")
 
-    with st.container(border=True):
-        st.header("❗提醒")
-        st.markdown("连接可能不稳定，如出错请再次发送您的消息")
-
     blank = st.container(border=False, height=20)
     blank.title("")
 
