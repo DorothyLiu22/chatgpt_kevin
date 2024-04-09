@@ -13,6 +13,9 @@ from google.cloud import storage
 st.set_page_config(page_title="TechVantage聊天室")
 
 conn = st.connection('gcs', type=FilesConnection)
+df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
+if df:
+    print ("OK!")
 
 
 AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
@@ -28,7 +31,7 @@ def chat_history():
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
     #n = datetime.now()
-    #print(test)
+    print(test)
     test.to_csv("chat_history/chat"+ str(n) +".csv", encoding="utf-8")
     upload_to_bucket("streamlit_kevin","AI/chat"+ str(n), "chat_history/chat"+ str(n) +".csv")
 
