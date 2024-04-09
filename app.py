@@ -94,7 +94,7 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt) or re.search(welcome[4], prompt) or re.search(welcome[5], prompt)\
             or re.search(welcome[6], prompt):
-         message(prompt, is_user=True,avatar_style="thumbs")
+         message(prompt, is_user=True,logo='AI.png')
          time.sleep(2)
          message("你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="bottts")
          st.session_state.past.append({"role": "user", "content": prompt})
