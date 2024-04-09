@@ -14,8 +14,6 @@ st.set_page_config(page_title="TechVantage聊天室")
 
 conn = st.connection('gcs', type=FilesConnection)
 df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
-if df:
-    print ("OK!")
 
 
 AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
