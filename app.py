@@ -6,6 +6,7 @@ import time
 import re
 import pandas as pd
 import random
+from datetime import datetime
 from st_files_connection import FilesConnection
 from google.cloud import storage
 
@@ -17,13 +18,19 @@ conn = st.connection('gcs', type=FilesConnection)
 AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
+def upload_to_bucket(bucket_name, blob_path, local_path):
+    bucket = storage.Client().bucket(bucket_name)
+    blob = bucket.blob(blob_path)
+    blob.upload_from_filename(local_path)
 
 def chat_history():
-    random_number = random.randint(1,1000)
+    #random_number = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
+    time = datetime.now()
     #print(test)
-    test.conn.to_csv("chat_history/chat"+ str(random_number) +".csv", encoding="utf-8")
+    test.conn.to_csv("chat_history/chat"+ str(time) +".csv", encoding="utf-8")
+    upload_to_bucket("streamlit_kevin","AI/chat"+ str(time), "chat_history/chat"+ str(time) +".csv")
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
