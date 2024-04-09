@@ -6,9 +6,13 @@ import time
 import re
 import pandas as pd
 import random
-
+from st_files_connection import FilesConnection
+from google.cloud import storage
 
 st.set_page_config(page_title="TechVantage聊天室")
+
+conn = st.connection('gcs', type=FilesConnection)
+
 
 AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
@@ -18,8 +22,8 @@ def chat_history():
     random_number = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
-    print(test)
-    test.to_csv("chat_history/chat"+ str(random_number) +".csv", encoding="utf-8")
+    #print(test)
+    test.conn.to_csv("chat_history/chat"+ str(random_number) +".csv", encoding="utf-8")
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
