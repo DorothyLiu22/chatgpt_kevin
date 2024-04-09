@@ -6,7 +6,7 @@ import time
 import re
 import pandas as pd
 import random
-from datetime import datetime
+#from datetime import datetime
 from st_files_connection import FilesConnection
 from google.cloud import storage
 
@@ -24,13 +24,13 @@ def upload_to_bucket(bucket_name, blob_path, local_path):
     blob.upload_from_filename(local_path)
 
 def chat_history():
-    #random_number = random.randint(1,1000)
+    n = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
-    time = datetime.now()
+    #n = datetime.now()
     #print(test)
-    test.to_csv("chat_history/chat"+ str(time) +".csv", encoding="utf-8")
-    upload_to_bucket("streamlit_kevin","AI/chat"+ str(time), "chat_history/chat"+ str(time) +".csv")
+    test.to_csv("chat_history/chat"+ str(n) +".csv", encoding="utf-8")
+    upload_to_bucket("streamlit_kevin","AI/chat"+ str(n), "chat_history/chat"+ str(n) +".csv")
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
