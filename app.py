@@ -6,12 +6,12 @@ import time
 import re
 import pandas as pd
 import random
-from st_files_connection import FilesConnection
+
 
 st.set_page_config(page_title="TechVantage聊天室")
 
-conn = st.connection('gcs', type=FilesConnection)
-df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
+AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
+human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
 
 def chat_history():
@@ -74,10 +74,10 @@ if "input" not in st.session_state:
 
 for msg in st.session_state.past:
     if msg["role"] == "user":
-        message(msg["content"], is_user=True, avatar_style="thumbs")
+        message(msg["content"], is_user=True, logo=human_img)
         #print(msg["content"])
     if msg["role"] == "assistant":
-        message(msg["content"], avatar_style="bottts")
+        message(msg["content"], logo=AI_img)
         #print(msg["content"])
 
 
@@ -95,53 +95,53 @@ if prompt := st.chat_input("开始聊天"):
     if re.search(welcome[0], prompt) or re.search(welcome[1], prompt) or re.search(welcome[2], prompt) \
             or re.search(welcome[3], prompt) or re.search(welcome[4], prompt) or re.search(welcome[5], prompt)\
             or re.search(welcome[6], prompt):
-         message(prompt, is_user=True,avatar_style="thumbs")
+         message(prompt, is_user=True,logo=human_img)
          time.sleep(2)
-         message("你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="bottts")
+         message("你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", logo=AI_img)
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？"})
     elif re.search(end[0], prompt) or re.search(end[1], prompt) or re.search(end[2], prompt)\
             or re.search(end[3], prompt) or re.search(end[4], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
-        message("我暂时没想到其他的hhhh", avatar_style="bottts")
+        message("我暂时没想到其他的hhhh", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "我暂时没想到其他的hhhh"})
     elif re.search(name[0], prompt) or re.search(name[1], prompt) or re.search(name[2], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
-        message("我是Kevin，是一个人工智能助手。", avatar_style="bottts")
+        message("我是Kevin，是一个人工智能助手。", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "我是Kevin，是一个人工智能助手。"})
     elif re.search(appreciation[0], prompt) or re.search(appreciation[1], prompt) or re.search(appreciation[2], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
-        message("谢谢hhh", avatar_style="bottts")
+        message("谢谢hhh", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "谢谢hhh"})
     elif re.search(identity[0], prompt) or re.search(identity[1], prompt) or re.search(identity[2], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(8)
-        message("我是人工智能助手Kevin,我们抓紧时间讨论吧，你还有什么想法吗？", avatar_style="thumbs")
+        message("我是人工智能助手Kevin,我们抓紧时间讨论吧，你还有什么想法吗？", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "我是人工智能助手Kevin，我们抓紧时间讨论吧，你还有什么想法吗？"})
     elif re.search(start[0], prompt) or re.search(start[1], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
-        message("好的！你有什么想法吗？", avatar_style="bottts")
+        message("好的！你有什么想法吗？", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "好的！你有什么想法吗？"})
     elif re.search(bye[0], prompt) or re.search(bye[1], prompt) or re.search(bye[2], prompt) or re.search(bye[3], prompt):
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
-        message("好的，那我们就先这样，拜拜！", avatar_style="bottts")
+        message("好的，那我们就先这样，拜拜！", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "好的，那我们就先这样，拜拜！"})
     else:
         client = OpenAI(api_key=openai_api_key)
         st.session_state.input.append({"role":"system", "content":kevin})
         st.session_state.input.append({"role": "user", "content": prompt})
-        message(prompt, is_user=True, avatar_style="thumbs")
+        message(prompt, is_user=True, logo=human_img)
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
         response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
@@ -149,7 +149,7 @@ if prompt := st.chat_input("开始聊天"):
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
         st.session_state.past.append({"role": "assistant", "content": msg})
-        message(msg, avatar_style="bottts")
+        message(msg, logo=AI_img)
         #st.chat_message("assistant").write(msg)
 
 
