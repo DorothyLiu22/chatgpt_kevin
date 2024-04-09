@@ -29,7 +29,7 @@ def chat_history():
     test = pd.DataFrame(columns = name, data=st.session_state.past)
     time = datetime.now()
     #print(test)
-    test.conn.to_csv("chat_history/chat"+ str(time) +".csv", encoding="utf-8")
+    test.to_csv("chat_history/chat"+ str(time) +".csv", encoding="utf-8")
     upload_to_bucket("streamlit_kevin","AI/chat"+ str(time), "chat_history/chat"+ str(time) +".csv")
 
 with st.sidebar:
