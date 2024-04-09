@@ -6,32 +6,28 @@ import time
 import re
 import pandas as pd
 import random
-#from datetime import datetime
+from datetime import datetime
 from st_files_connection import FilesConnection
 from google.cloud import storage
 
 st.set_page_config(page_title="TechVantage聊天室")
 
 conn = st.connection('gcs', type=FilesConnection)
-df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
+#df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
 
 
 AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
-def upload_to_bucket(bucket_name, blob_path, local_path):
-    bucket = storage.Client().bucket(bucket_name)
-    blob = bucket.blob(blob_path)
-    blob.upload_from_filename(local_path)
 
 def chat_history():
-    n = random.randint(1,1000)
+    #n = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
-    #n = datetime.now()
-    print(test)
-    test.to_csv("chat_history/chat"+ str(n) +".csv", encoding="utf-8")
-    upload_to_bucket("streamlit_kevin","AI/chat"+ str(n), "chat_history/chat"+ str(n) +".csv")
+    n = datetime.now()
+    bucket = storage.Client().bucket("streamlit_kevin")
+    blob = bucket.blob("AI/chat"+ str(n) +".csv")
+    blob.upload_from_string(test.to_csv(), 'text/csv')
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
