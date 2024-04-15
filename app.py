@@ -92,8 +92,8 @@ for msg in st.session_state.past:
 
 welcome = ["你好","您好","hello","hi"]
 name = ["你是谁","你叫什么", "名字"]
-start = ["开始讨论", "讨论"]
-end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
+#start = ["开始讨论", "讨论"]
+#end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
 appreciation = ["有道理", "真不错","厉害"]
 bye = ["拜拜", "就这样","没有其他想法了", "想到这些","没有新的想法"]
 identity = ["是AI", "是人", "是机器人"]
@@ -107,13 +107,13 @@ if prompt := st.chat_input("开始聊天"):
          message("你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", logo=AI_img)
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？"})
-    elif re.search(end[0], prompt) or re.search(end[1], prompt) or re.search(end[2], prompt)\
-            or re.search(end[3], prompt) or re.search(end[4], prompt):
-        message(prompt, is_user=True, logo=human_img)
-        time.sleep(2)
-        message("我暂时没想到其他的hhhh", logo=AI_img)
-        st.session_state.past.append({"role": "user", "content": prompt})
-        st.session_state.past.append({"role": "assistant", "content": "我暂时没想到其他的hhhh"})
+    #elif re.search(end[0], prompt) or re.search(end[1], prompt) or re.search(end[2], prompt)\
+            #or re.search(end[3], prompt) or re.search(end[4], prompt):
+        #message(prompt, is_user=True, logo=human_img)
+        #time.sleep(2)
+        #message("我暂时没想到其他的hhhh", logo=AI_img)
+        #st.session_state.past.append({"role": "user", "content": prompt})
+        #st.session_state.past.append({"role": "assistant", "content": "我暂时没想到其他的hhhh"})
     elif re.search(name[0], prompt) or re.search(name[1], prompt) or re.search(name[2], prompt):
         message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
@@ -132,12 +132,12 @@ if prompt := st.chat_input("开始聊天"):
         message("我是人工智能助手Kevin,我们抓紧时间讨论吧，你还有什么想法吗？", logo=AI_img)
         st.session_state.past.append({"role": "user", "content": prompt})
         st.session_state.past.append({"role": "assistant", "content": "我是人工智能助手Kevin，我们抓紧时间讨论吧，你还有什么想法吗？"})
-    elif re.search(start[0], prompt) or re.search(start[1], prompt):
-        message(prompt, is_user=True, logo=human_img)
-        time.sleep(2)
-        message("好的！你有什么想法吗？", logo=AI_img)
-        st.session_state.past.append({"role": "user", "content": prompt})
-        st.session_state.past.append({"role": "assistant", "content": "好的！你有什么想法吗？"})
+    #elif re.search(start[0], prompt) or re.search(start[1], prompt):
+       # message(prompt, is_user=True, logo=human_img)
+       # time.sleep(2)
+        #message("好的！你有什么想法吗？", logo=AI_img)
+        #st.session_state.past.append({"role": "user", "content": prompt})
+        #st.session_state.past.append({"role": "assistant", "content": "好的！你有什么想法吗？"})
     elif re.search(bye[0], prompt) or re.search(bye[1], prompt) or re.search(bye[2], prompt) or re.search(bye[3], prompt):
         message(prompt, is_user=True, logo=human_img)
         time.sleep(2)
