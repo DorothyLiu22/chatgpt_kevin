@@ -17,7 +17,7 @@ conn = st.connection('gcs', type=FilesConnection)
 
 
 #AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
-Ai_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
+AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
 
