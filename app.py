@@ -16,8 +16,8 @@ conn = st.connection('gcs', type=FilesConnection)
 #df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
 
 
-#AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
-AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
+AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.png"
+#AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
 
@@ -83,7 +83,7 @@ if "input" not in st.session_state:
 
 for msg in st.session_state.past:
     if msg["role"] == "user":
-        message(msg["content"], is_user=True, logo=human_img)
+        message(msg["content"], is_user=True, avatar_style="big-smile")
         #print(msg["content"])
     if msg["role"] == "assistant":
         message(msg["content"], logo=AI_img)
