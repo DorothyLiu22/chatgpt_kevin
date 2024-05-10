@@ -91,7 +91,7 @@ for msg in st.session_state.past:
 
 
 
-welcome = ["你好","您好","hello","hi"]
+welcome = ["你好","您好","hello","hi", "哈喽"]
 name = ["你是谁","你叫什么", "名字"]
 #start = ["开始讨论", "讨论"]
 #end = ["还有什么想法", "其他的想法", "其他想法", "还有别的","还有新的"]
