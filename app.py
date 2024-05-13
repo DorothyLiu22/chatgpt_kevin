@@ -33,9 +33,6 @@ def chat_history():
 with st.sidebar:
     st.sidebar.title("💬 TechVantage 聊天室")
 
-    blank = st.container(border=False, height=50)
-    blank.title("")
-
     blank = st.container(border=False, height=20)
     blank.title("")
 
