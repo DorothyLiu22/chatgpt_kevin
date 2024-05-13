@@ -40,6 +40,10 @@ with st.sidebar:
     blank.title("")
 
     with st.container(border=True,):
+        st.header("❗ 提醒")
+        st.write("如遇报错，请简单修改您的语言再次发送，感谢理解")
+
+    with st.container(border=True,):
         st.header("❗ 结束讨论后请按下按钮 ")
         if st.button("结束聊天", type="primary"):
            chat_history()
