@@ -60,7 +60,7 @@ with st.sidebar:
     "[Source by Dorothy](https://github.com/DorothyLiu22/chatgpt_kevin)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
 
-st.title("💬 TechVantage 聊天室")
+st.title("💬 TechVantage Chat Room")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 
