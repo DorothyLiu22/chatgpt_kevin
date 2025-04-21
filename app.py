@@ -10,7 +10,7 @@ from datetime import datetime
 from st_files_connection import FilesConnection
 from google.cloud import storage
 
-st.set_page_config(page_title="TechVantage聊天室")
+st.set_page_config(page_title="TechVantage Chat Room")
 
 conn = st.connection('gcs', type=FilesConnection)
 #df = conn.read("streamlit_kevin/myfile.csv", input_format="csv", ttl=600)
@@ -31,7 +31,7 @@ def chat_history():
     blob.upload_from_string(test.to_csv(), 'text/csv')
 
 with st.sidebar:
-    st.sidebar.title("💬 TechVantage 聊天室")
+    st.sidebar.title("💬 TechVantage Chat Room")
 
     blank = st.container(border=False, height=20)
     blank.title("")
