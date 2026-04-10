@@ -55,7 +55,7 @@ with st.sidebar:
     blank = st.container(border=False,height=50)
     blank.title("")
 
-    openai_api_key = st.text_input("TechVantage", key="openai_api_key", type="password")
+    #openai_api_key = st.text_input("TechVantage", key="openai_api_key", type="password")
     #"[TechVantage](https://platform.openai.com/account/api-keys)"
     "[Source by Dorothy](https://github.com/DorothyLiu22/chatgpt_kevin)"
     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/streamlit/llm-examples?quickstart=1)"
