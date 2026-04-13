@@ -30,7 +30,7 @@ openai_api_key = st.secrets["openai_api_key"]
 nickname = st.text_input("昵称")
 
 if not nickname:
-    st.warning("请设置您的昵称")
+    st.warning("请设置您的昵称。设置好后，可在下方的聊天框开始讨论。")
     st.stop()
 
 def chat_history():
@@ -65,7 +65,7 @@ with st.sidebar:
         st.header("❗ 结束讨论后请按下按钮 ")
         if st.button("结束聊天", type="primary"):
            chat_history()
-           progress_text = "聊天连接已断开，请回到问卷页面"
+           progress_text = "聊天记录已保存，请回到问卷页面"
            my_bar = st.progress(0, text=progress_text)
            for percent_complete in range(100):
               time.sleep(0.01)
