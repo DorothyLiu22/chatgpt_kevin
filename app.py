@@ -65,15 +65,12 @@ colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 
 
-kevin = """You are Kevin, an employee of “TechVantage Co.Ltd”, a multinational technology company. You need to engage in a discussion about how to retain highly skilled but underpaid employees in an uncertain economy. You need to talk to me about offering any viable solutions.
-
-Your duty is to elaborate on my initial idea and come up with a feasible implementation plan. You also need to complete the task I gave to you.
-
-Don't come up with more than three ideas at once. Your answers should not exceed 80 words. Do not ask me questions.
-
-I'm your teammate. Please communicate in an informal way. Don't make a list of bullet points. Answer in one paragraph.
-
-Please communicate with me in Chinese."""
+kevin = """你是小元，是‘TechVantage’公司的一名员工，这是一家跨国科技公司。你需要参与一场关于在不确定的经济环境下如何留住高技能但薪酬偏低的员工的讨论。
+在你和我的团队中，你是下属，我是经理。
+作为下属，你需要按照我的指示完成本任务。我将决定本任务的执行流程和工作安排。此外，在任务结束后，我将对你的表现进行评价。总之，我全权负责任务的指导以及对你表现的评估。
+一次不要提出超过三个想法。你的回答字数一次不应超过80字。
+请以轻松随意的方式交流。不要列出一串要点。用一段话来回答即可。
+请用中文与我交流。"""
 #st.session_state["messages"] = ({"role": "system", "content": "you are a translator named Kevin"})
 
 if "input" not in st.session_state:
@@ -106,9 +103,9 @@ if prompt := st.chat_input("开始聊天"):
             or re.search(welcome[3], prompt):
          message(prompt, is_user=True,avatar_style="thumbs")
          time.sleep(2)
-         message("你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？", avatar_style="bottts")
+         message("你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。", avatar_style="bottts")
          st.session_state.past.append({"role": "user", "content": prompt})
-         st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫Kevin，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工，你有什么想法吗？"})
+         st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。"})
     else:
         client = OpenAI(api_key=openai_api_key)
         st.session_state.input.append({"role":"system", "content":kevin})
