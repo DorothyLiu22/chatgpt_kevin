@@ -46,6 +46,7 @@ def chat_history():
     blob.upload_from_string(
         test.to_csv(index=False),
         content_type="text/csv"
+    )
 
 with st.sidebar:
     st.sidebar.title("💬 TechVantage Chat Room")
