@@ -38,8 +38,8 @@ def chat_history():
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
     client = storage.Client.from_service_account_info(
-        st.secrets["gcp_service_account"],
-        project=st.secrets["gcp_service_account"]["yuan-493212"],
+        st.secrets["connections.gcs"],
+        project=st.secrets["connections.gcs"]["yuan-493212"],
     )
     bucket = client.bucket("ai_lower")
     blob = bucket.blob(f"{nickname}.csv")
