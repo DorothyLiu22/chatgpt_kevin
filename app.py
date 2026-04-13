@@ -27,7 +27,7 @@ def chat_history():
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
   #  n = datetime.now()
-    bucket = storage.Client().bucket("ai_lower")
+    bucket = storage.Client().bucket("yuan1107/ai_lower")
     blob = bucket.blob("AI/chat"+ nickname +".csv")
     blob.upload_from_string(test.to_csv(), 'text/csv')
 
