@@ -41,7 +41,7 @@ def chat_history():
 
     client = storage.Client.from_service_account_info(
         gcs_info,
-        project=gcs_info["yuan-493212"]
+        project=gcs_info["project_id"]
     )
 
     bucket = client.bucket("ai_lower")
