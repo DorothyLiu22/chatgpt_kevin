@@ -20,7 +20,11 @@ AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.p
 #AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
+nickname = st.text_input("昵称")
 
+if not nickname:
+    st.warning("请设置您的昵称")
+    st.stop()
 
 def chat_history():
     #random_number = random.randint(1,1000)
