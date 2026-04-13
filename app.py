@@ -34,20 +34,23 @@ if not nickname:
     st.stop()
 
 def chat_history():
-    #random_number = random.randint(1,1000)
     name = ["role", "content"]
-    test = pd.DataFrame(columns = name, data=st.session_state.past)
+    test = pd.DataFrame(columns=name, data=st.session_state.past)
+
+    gcs_info = dict(st.secrets["connections"]["gcs"])
+
     client = storage.Client.from_service_account_info(
-        st.secrets["connections.gcs"],
-        project=st.secrets["connections.gcs"]["yuan-493212"],
+        gcs_info,
+        project=gcs_info["yuan-493212"]
     )
+
     bucket = client.bucket("ai_lower")
     blob = bucket.blob(f"{nickname}.csv")
+
     blob.upload_from_string(
         test.to_csv(index=False),
         content_type="text/csv"
     )
-
 with st.sidebar:
     st.sidebar.title("💬 TechVantage Chat Room")
 
