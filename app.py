@@ -13,10 +13,10 @@ from google.cloud import storage
 st.set_page_config(page_title="TechVantage Chat Room")
 
 conn = st.connection('gcs', type=FilesConnection)
-df = conn.read("yuan1107/ai_lower/myfile.csv", input_format="csv", ttl=600)
+#df = conn.read("yuan1107/ai_lower/myfile.csv", input_format="csv", ttl=600)
 # Print results.
-for row in df.itertuples():
-    st.write(f"{row.Owner} has a :{row.Pet}:")
+#for row in df.itertuples():
+#    st.write(f"{row.Owner} has a :{row.Pet}:")
 
 
 
@@ -30,7 +30,7 @@ def chat_history():
     #random_number = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
-    bucket = storage.Client().bucket("ai_lower")
+    bucket = storage.Client().bucket("yuan1107/ai_lower")
     blob = bucket.blob(nickname +".csv")
     blob.upload_from_string(test.to_csv(), 'text/csv')
 
