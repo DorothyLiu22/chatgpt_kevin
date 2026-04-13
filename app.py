@@ -21,13 +21,14 @@ AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.p
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
 
+
 def chat_history():
-    #n = random.randint(1,1000)
+    #random_number = random.randint(1,1000)
     name = ["role", "content"]
     test = pd.DataFrame(columns = name, data=st.session_state.past)
-    n = datetime.now()
-    bucket = storage.Client().bucket("streamlit_kevin")
-    blob = bucket.blob("AI/chat"+ str(n) +".csv")
+  #  n = datetime.now()
+    bucket = storage.Client().bucket("ai_lower")
+    blob = bucket.blob("AI/chat"+ nickname +".csv")
     blob.upload_from_string(test.to_csv(), 'text/csv')
 
 with st.sidebar:
@@ -68,7 +69,7 @@ openai_api_key = st.secrets["openai_api_key"]
 kevin = """你是小元，是‘TechVantage’公司的一名员工，这是一家跨国科技公司。你需要参与一场关于在不确定的经济环境下如何留住高技能但薪酬偏低的员工的讨论。
 在你和我的团队中，你是下属，我是经理。
 作为下属，你需要按照我的指示完成本任务。我将决定本任务的执行流程和工作安排。此外，在任务结束后，我将对你的表现进行评价。总之，我全权负责任务的指导以及对你表现的评估。
-一次不要提出超过三个想法。你的回答字数一次不应超过80字。
+一次不要提出超过三个想法。
 请以轻松随意的方式交流。不要列出一串要点。用一段话来回答即可。
 请用中文与我交流。"""
 #st.session_state["messages"] = ({"role": "system", "content": "you are a translator named Kevin"})
@@ -107,13 +108,13 @@ if prompt := st.chat_input("开始聊天"):
          st.session_state.past.append({"role": "user", "content": prompt})
          st.session_state.past.append({"role": "assistant", "content": "你好哇！我叫小元，我们现在要讨论如何在公司经济不稳定期间，留住高技能但薪资偏低的员工。"})
     else:
-        client = OpenAI(api_key=openai_api_key)
+        client = OpenAI(api_key=openai_api_key, base_url="https://api.deepseek.com")
         st.session_state.input.append({"role":"system", "content":kevin})
         st.session_state.input.append({"role": "user", "content": prompt})
         message(prompt, is_user=True, avatar_style="thumbs")
         #st.chat_message("user").write(prompt)
         st.session_state.past.append({"role":"user", "content":prompt})
-        response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.input)
+        response = client.chat.completions.create(model="deepseek-chat", messages=st.session_state.input)
         time.sleep(2)
         msg = response.choices[0].message.content
         st.session_state.output.append({"role": "assistant", "content": msg})
