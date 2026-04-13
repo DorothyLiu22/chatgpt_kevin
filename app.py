@@ -13,10 +13,10 @@ from google.cloud import storage
 st.set_page_config(page_title="TechVantage Chat Room")
 
 conn = st.connection('gcs', type=FilesConnection)
-#df = conn.read("yuan1107/ai_lower/myfile.csv", input_format="csv", ttl=600)
-# Print results.
-#for row in df.itertuples():
-#    st.write(f"{row.Owner} has a :{row.Pet}:")
+df = conn.read("yuan1107/ai_lower/myfile.csv", input_format="csv", ttl=600)
+#Print results.
+for row in df.itertuples():
+    st.write(f"{row.Owner} has a :{row.Pet}:")
 
 
 
