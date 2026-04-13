@@ -20,11 +20,7 @@ AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.p
 #AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
-nickname = st.text_input("昵称")
 
-if not nickname:
-    st.warning("请设置您的昵称")
-    st.stop()
 
 def chat_history():
     #random_number = random.randint(1,1000)
@@ -69,6 +65,11 @@ st.title("💬 TechVantage Chat Room")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 
+nickname = st.text_input("昵称")
+
+if not nickname:
+    st.warning("请设置您的昵称")
+    st.stop()
 
 kevin = """你是小元，是‘TechVantage’公司的一名员工，这是一家跨国科技公司。你需要参与一场关于在不确定的经济环境下如何留住高技能但薪酬偏低的员工的讨论。
 在你和我的团队中，你是下属，我是经理。
