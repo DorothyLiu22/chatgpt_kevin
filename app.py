@@ -62,8 +62,8 @@ with st.sidebar:
         st.write("如遇报错，请简单修改您的语言再次发送，感谢理解")
 
     with st.container(border=True,):
-        st.header("❗ 结束讨论后请按下按钮 ")
-        if st.button("结束聊天", type="primary"):
+        st.header("❗ 结束讨论后请保存聊天记录 ")
+        if st.button("结束聊天并保存聊天记录", type="primary"):
            chat_history()
            progress_text = "聊天记录已保存，请回到问卷页面"
            my_bar = st.progress(0, text=progress_text)
