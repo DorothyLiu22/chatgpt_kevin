@@ -24,7 +24,7 @@ AI_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/AI.p
 #AI_img = "https://www.shutterstock.com/image-vector/robot-head-avatar-vector-design-600nw-2352274355.jpg"
 human_img = "https://raw.githubusercontent.com/DorothyLiu22/chatgpt_kevin/main/human.png"
 
-st.title("💬 TechVantage Chat Room")
+st.title("💬 TechVantage 聊天室")
 colored_header (label='', description='',color_name = 'gray-30')
 openai_api_key = st.secrets["openai_api_key"]
 nickname = st.text_input("昵称")
